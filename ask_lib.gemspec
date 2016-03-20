@@ -6,14 +6,10 @@ Gem::Specification.new do |s|
   s.description = 'A simple library for the Alexa Skills Kit API.'
   s.authors     = ['Pat McGee']
   s.email       = 'patmcgee331@gmail.com'
-  s.files       = ['lib/ask_lib/card.rb',
-                   'lib/ask_lib/intent.rb',
-                   'lib/ask_lib/output_speech.rb',
-                   'lib/ask_lib/request.rb',
-                   'lib/ask_lib/response.rb',
-                   'lib/ask_lib/session.rb',
-                   'lib/ask_lib/slot.rb',
-                   'lib/ask_lib/user.rb',
-                   'lib/ask_lib.rb']
+  s.files       = `git ls-files -- *.rb`.split("\n")
+  s.test_files  = `git ls-files -- {spec}/*`.split("\n")
   s.license     = 'MIT'
+  s.require_paths = ['lib']
+
+  s.add_development_dependency 'rspec', '~> 3.4'
 end

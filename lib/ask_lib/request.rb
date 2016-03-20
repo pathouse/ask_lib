@@ -15,21 +15,22 @@ module ASKLib
       @session = Session.new(json['session'])
       body = json['request']
       @id = body['requestId']
+      @type = body['type']
       @timestamp = body['timestamp']
       @reason_ended = body['reason']
-      @intent = Intent.new(body['intent'])
+      @intent = Intent.new(body['intent']) if body['intent']
     end
 
     def intent?
-      @body['type'] == INTENT_REQUEST
+      @type == INTENT_REQUEST
     end
 
     def launch?
-      @body['type'] == LAUNCH_REQUEST
+      @type == LAUNCH_REQUEST
     end
 
     def session_ended?
-      @body['type'] == SESSION_ENDED_REQUEST
+      @type == SESSION_ENDED_REQUEST
     end
   end
 end

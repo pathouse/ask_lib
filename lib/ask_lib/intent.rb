@@ -3,11 +3,11 @@ require 'ask_lib/slot'
 module ASKLib
   # Intent. Intent paremeters sent in a request.
   class Intent
-    attr_reader :name
+    attr_reader :name, :slots
 
     def initialize(intent)
       @name = intent['name']
-      @slots = intent['slot'].map { |slot| Slot.new(slot) }
+      @slots = intent['slots'].map { |_, slot| Slot.new(slot) }
     end
   end
 end
